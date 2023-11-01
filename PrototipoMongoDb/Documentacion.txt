@@ -1,4 +1,3 @@
-Instalacion de estos modulos para poder correr el proyecto:
 
 npm install express
 
@@ -6,4 +5,4 @@ npm install mongodb
 
 npm install mongoose
 
-Cuando los modulos sea han instalado, ejecutar en la terminal npm start para correr el servidor
+npm install nodemon --save-dev

@@ -1,8 +1,0 @@
-
-npm install express
-
-npm install mongodb
-
-npm install mongoose
-
-npm install nodemon --save-dev
