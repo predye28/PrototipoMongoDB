@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Lista de Usuarios</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Productos</h1>
+        <div class="resultado-container"></div>
+        <div class="boton-volver">
+            <button onclick="volverPantalla()">Volver</button>
+        </div>
+    </div>
+
+    <script>
+        function volverPantalla() {
+            window.location.href = 'lobby.html';
+        }
+
+        // Función para cargar la lista de usuarios
+        async function cargarListaUsuarios() {
+            try {
+                const response = await fetch('/obtenerProductos');
+                if (response.ok) {
+                    const productos = await response.json();
+                    const resultadoContainer = document.querySelector('.resultado-container');
+
+                    resultadoContainer.innerHTML = '';
+
+                    // Agrega botones para cada usuario
+                    productos.forEach(producto => {
+                        const productoButton = document.createElement('button');
+                        productoButton.textContent = producto.nombre;
+
+                        // Agrega un evento de clic para redirigir al usuario a la página de usuario.html
+
+
+                        resultadoContainer.appendChild(productoButton);
+                    });
+                } else {
+                    console.error('Error al obtener la lista de usuarios:', response.status);
+                }
+            } catch (error) {
+                console.error('Error al obtener la lista de usuarios:', error);
+            }
+        }
+        
+        window.onload = cargarListaUsuarios;
+
+    </script>
+</body>
+</html>
